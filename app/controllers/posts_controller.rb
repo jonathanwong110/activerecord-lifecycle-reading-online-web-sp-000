@@ -13,23 +13,14 @@ class PostsController < ApplicationController
 
 	def create
 	  @post = Post.new(post_params)
-	  if @post.valid?
-	    @post.save
-	    redirect_to post_path(@post)
-	   else
-	     render :new
-	   end
+	  @post.save
+	  redirect_to post_path(@post)
 	end
 
 	def update
 	  @post = Post.find(params[:id])
 	  @post.update(post_params)
-	  if @post.valid?
-	    @post.save
-	    redirect_to post_path(@post)
-	  else
-	    render :edit
-	  end
+	  redirect_to post_path(@post)
 	end
 
 	def edit
